@@ -1,8 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
-import { ThemeContext } from "styled-components";
-import { useContext } from "react";
 
 function App() {
     const Button = styled.button`
@@ -17,12 +14,12 @@ function App() {
     const Container = styled.div`
         text-align: center;
     `;
-    const themeContext = useContext(ThemeContext);
 
     return (
         <div className="Layout">
             <header className="header">
                 <Container>
+                    <h1>SpaceX</h1>
                     <Button primary>Primary Button</Button>
                 </Container>
             </header>
