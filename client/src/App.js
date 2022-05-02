@@ -1,5 +1,18 @@
 import "./App.css";
 import styled from "styled-components";
+import Launches from "./components/Launches";
+import {
+    ApolloClient,
+    ApolloProvider,
+    InMemoryCache,
+    
+} from "@apollo/client";
+
+const client = new ApolloClient({
+    uri: "http://localhost:4000/graphql",
+    cache: new InMemoryCache()
+
+});
 
 function App() {
     const Button = styled.button`
@@ -16,14 +29,17 @@ function App() {
     `;
 
     return (
-        <div className="Layout">
-            <header className="header">
-                <Container>
-                    <h1>SpaceX</h1>
-                    <Button primary>Primary Button</Button>
-                </Container>
-            </header>
-        </div>
+        <ApolloProvider client={client}>
+            <div className="Layout">
+                <header className="header">
+                    <Container>
+                        <h1>SpaceX</h1>
+                        <Launches/>
+                        <Button primary>Button</Button>
+                    </Container>
+                </header>
+            </div>
+        </ApolloProvider>
     );
 }
 
